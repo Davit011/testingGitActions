@@ -1,0 +1,34 @@
+name: CI/CD-Testing
+#env:
+  #BUCKET_NAME     : this is bucket name
+  #APPLICATION_NAME: this is apllication name
+  #ENVIRONMENT_NAME: this is environment name
+  #PACKAGE_NAME_FOR_DEPLOY: this is package name for deploy
+  #AWS_REGION_NAME: this is aws region name
+  
+  
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  ci-part:
+    runs-on: ubuntu-lates
+    
+    steps:
+    - name: clone
+    - uses: actions/checkout@v1 
+    
+    - name: create zip for diployment
+    #run: zip -r ${{ PACKAGE_NAME_FOR_DEPLOY }}./ -x *.git*
+    
+    - name: config AWS
+      uses: aws actions/configure-aws-credentials@v1
+      #with:
+        #aws-access-key-id: ${{ aws acces key }}
+        #aws-secret-access-key: ${{ aws secret key }}
+        #aws.region: ${{ region-name }}
+        
+    - name: copy deploy package to s3 bucket
+      run: aws s3 cp ${{ deploy_package_name }} s3://${{ BUCKET_NAME }}/
