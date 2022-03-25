@@ -32,3 +32,27 @@ jobs:
         
     - name: copy deploy package to s3 bucket
       run: aws s3 cp ${{ deploy_package_name }} s3://${{ BUCKET_NAME }}/
+  cd-part:
+    runs-on: ubuntu-latest
+    needs: [ci-part]
+    
+    steps:
+      - name: config AWS
+        uses: aws actions/configure-aws-credentials@v1
+       #with:
+         #aws-access-key-id: ${{ aws acces key }}
+         #aws-secret-access-key: ${{ aws secret key }}
+         #aws.region: ${{ region-name }}  
+         
+      - name: create-new-eb-app
+        run: |
+         aws elasticbreanstalk create-application-version\
+         --application-name:${{ apllication-name }}\
+         --source-bundle S3Bucket= "${{ bucketname }}",S3Key="${{ package_name }}"\
+         --version-label "Version-${{ github.sha }}"\
+         
+      # - name: Deploy new EB app version
+       #  run: | 
+       #   aws elasticbeanstalk update-environment\
+        #  --environment-name ${{ env_name }}\
+        #  -- version-label "Version-${{ github.sha }}"
