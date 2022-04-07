@@ -1,18 +1,13 @@
-name: compile
-
+name: project-run
 on:
-  pull_request:
-    branches:
-      - '*'
   push:
     branches:
       - '*'
-
 jobs:
-  build:
+  compiling:
     runs-on: ubuntu-18.04
     steps:
-      - name: set up JDK 11
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Maven clear
         run: mvn -B clean verify
