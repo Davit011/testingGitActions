@@ -1,9 +1,18 @@
-name: depcheck
-on: [push]
+name: compile
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - '*'
+
 jobs:
-  check:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - name: pip-compile-parity
-        uses: theahura/pip-compile-diff-action@main
+      - name: set up JDK 11
+        uses: actions/checkout@v2
+      - name: Maven clear
+        run: mvn -B clean verify
