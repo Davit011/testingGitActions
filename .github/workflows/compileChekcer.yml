@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: hashicorp/terraform-github-actions/fmt
     - uses: hashicorp/terraform-github-actions/init
-    - uses: hashicorp/terraform-github-actions/validate
+
