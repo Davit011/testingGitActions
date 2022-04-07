@@ -1,41 +1,17 @@
-name: Post warnings/errors as PR comment
-on:
-  pull_request:
-    branches:
-      - '*'
+name: GitHub Actions Demo
+on: [push]
 jobs:
-  checkCompileResult:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Post warnings/errors as PR comment
-          # You may pin to the exact commit or the version.
-          # uses: JacobDomagala/CompileResult@77c1cdfde98eab51d56d35009b6c89487b4113ec
-          uses: JacobDomagala/CompileResult@v0.0.1
-          with:
-            # File which contains compilation result
-            compile_result_file: src/*
-            # Which compiler was used to produce the output. MSVC/GNU/CLANG
-#            compiler: JDK16
-#            # GITHUB_TOKEN or a repo scoped PAT.
-#            token: # default is ${{ github.token }}
-#            # Action work directory
-#            work_dir: # default is ${{ github.workspace }}
-#            # Full path to the directory that should be ignored
-#            exclude_dir: # optional
-#            # Github Pull Request number
-#            pull_request_number: # default is ${{ github.event.pull_request.number }}
-#            # Comment title that will be displayed on top of the comment. Used also to determine whether comment already exists and should be edited or not
-#            comment_title: # default is COMPILE RESULT
-#            # Number of lines for code snippet which will be displayed for each error/warning
-#            num_lines_to_display: # optional, default is 5
-#            # Use this input to generate debug prints
-#            debug_output: # optional
-
-
-
-      - #    # Comment title that will be displayed on top of the comment. Used also to determine whether comment already exists and should be edited or not
-#    comment_title: # default is COMPILE RESULT
-#    # Number of lines for code snippet which will be displayed for each error/warning
-#    num_lines_to_display: # optional, default is 5
-#    # Use this input to generate debug prints
-#    debug_output: # optional
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
