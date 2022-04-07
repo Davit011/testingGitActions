@@ -1,18 +1,21 @@
-name: compile
-
-on:
-  pull_request:
-    branches:
-      - '*'
-  push:
-    branches:
-      - '*'
-
-jobs:
-  build:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: set up JDK 11
-        uses: actions/checkout@v2
-      - name: Maven clear
-        run: mvn -B clean verify
+- name: Post warnings/errors as PR comment
+  # You may pin to the exact commit or the version.
+  # uses: JacobDomagala/CompileResult@77c1cdfde98eab51d56d35009b6c89487b4113ec
+  uses: JacobDomagala/CompileResult@v0.0.1
+  with:
+    # File which contains compilation result
+    compile_result_file: src/**
+    # Which compiler was used to produce the output. MSVC/GNU/CLANG
+    compiler: JDK 16
+    # GITHUB_TOKEN or a repo scoped PAT.
+    token: ${{ github.token }}
+    # Action work directory
+    work_dir: ${{ github.workspace }}
+    # Github Pull Request number
+    pull_request_number: ${{ github.event.pull_request.number }}
+#    # Comment title that will be displayed on top of the comment. Used also to determine whether comment already exists and should be edited or not
+#    comment_title: # default is COMPILE RESULT
+#    # Number of lines for code snippet which will be displayed for each error/warning
+#    num_lines_to_display: # optional, default is 5
+#    # Use this input to generate debug prints
+#    debug_output: # optional
