@@ -1,18 +1,13 @@
-name: compile
+name: terraform
 
 on:
   pull_request:
-    branches:
-      - '*'
-  push:
-    branches:
-      - '*'
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
+  terraform:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: set up JDK 11
-        uses: actions/checkout@v2
-      - name: Maven clear
-        run: mvn -B clean verify
+    - uses: hashicorp/terraform-github-actions/fmt
+    - uses: hashicorp/terraform-github-actions/init
+    - uses: hashicorp/terraform-github-actions/validate
