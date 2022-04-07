@@ -9,8 +9,5 @@ public class TestingGitActionsApplication {
     public static void main(String[] args) {
         SpringApplication.run(TestingGitActionsApplication.class, args);
     }
-    public static void 3ain(String[] args) {
-        SpringApplication.run(TestingGitActionsApplication.class, args);
-    }
 
 }
