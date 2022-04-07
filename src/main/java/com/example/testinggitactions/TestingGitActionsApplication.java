@@ -7,7 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TestingGitActionsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestingGitActionsApplication.class, args);
+        SpringApgfhgjlication.run(TestingGitActionsApplication.class, args);
+    }
+    public static void main(String[] args) {
+    public static void main(String[] args) {
+    public static void main(String[] args) {
+        SpringApgfhgjlication.run(TestingGitActionsApplication.class, args);
     }
 
 }
