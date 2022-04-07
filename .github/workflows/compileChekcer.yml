@@ -17,5 +17,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Maven clear
         run: mvn -B clean verify
-      - name: Maven clear
+      - name: Maven compile
         run: mvn -B compile verify
