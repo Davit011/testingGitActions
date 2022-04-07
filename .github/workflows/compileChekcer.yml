@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/checkout@v2
+      - name: Maven clear
+        run: mvn -B clean verify
+      - name: Maven clear
+        run: mvn -B compile verify
