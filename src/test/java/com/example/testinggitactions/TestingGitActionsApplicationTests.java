@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class TestingGitActionsApplicationTests {
 
-    @Test
     void contextLoads() {
     }
 
