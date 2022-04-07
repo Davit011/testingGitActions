@@ -1,18 +1,27 @@
-- name: Post warnings/errors as PR comment
+name: CI-CD-Pipline-to-AWS-ElasticBeanstalk
+on:
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  checkCompileResult:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post warnings/errors as PR comment
   # You may pin to the exact commit or the version.
   # uses: JacobDomagala/CompileResult@77c1cdfde98eab51d56d35009b6c89487b4113ec
-  uses: JacobDomagala/CompileResult@v0.0.1
-  with:
+       uses: JacobDomagala/CompileResult@v0.0.1
+        with:
     # File which contains compilation result
-    compile_result_file: src/**
+          compile_result_file: src/**
     # Which compiler was used to produce the output. MSVC/GNU/CLANG
-    compiler: JDK 16
+          compiler: JDK 16
     # GITHUB_TOKEN or a repo scoped PAT.
-    token: ${{ github.token }}
+          token: ${{ github.token }}
     # Action work directory
-    work_dir: ${{ github.workspace }}
+          work_dir: ${{ github.workspace }}
     # Github Pull Request number
-    pull_request_number: ${{ github.event.pull_request.number }}
+          pull_request_number: ${{ github.event.pull_request.number }}
 #    # Comment title that will be displayed on top of the comment. Used also to determine whether comment already exists and should be edited or not
 #    comment_title: # default is COMPILE RESULT
 #    # Number of lines for code snippet which will be displayed for each error/warning
